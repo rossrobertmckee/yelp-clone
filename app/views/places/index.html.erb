@@ -1,1 +1,12 @@
-yolo, swag
+<h1>All the Places</h1>
+
+<% @places.each do |place| %>
+  <%= link_to place.name, place_path(place) %><br />
+  <%= place.description %><br />
+  <%= place.lat %> <br />
+  <%= place.lng %> <br />
+
+  <hr />
+<% end %>
+
+<%= link_to 'New Place', new_place_path %>

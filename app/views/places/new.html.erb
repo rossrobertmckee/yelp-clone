@@ -1,1 +1,9 @@
-new
+<h1> Enter a new Place</h1>
+
+<%= simple_form_for @place do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :lat %>
+  <%= f.input :lng %>
+  <%= f.submit 'Create!' %>
+<% end %>

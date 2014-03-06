@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
   before_filter :require_current_place, :only => [:show, :edit, :update, :destroy]
   def index
+    @places = Place.all
   end
 
   def show
