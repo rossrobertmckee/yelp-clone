@@ -3,6 +3,11 @@
 <%= current_place.description %><br />
 <%= current_place.lat %> <br />
 <%= current_place.lng %> <br />
+  <% if current_place.user.present? %>
+    Added by: <%= current_place.user.email %><br />
+  <% end %>
+
+
 
 <%= link_to '<< Back', places_path %>
 <%= link_to 'edit', edit_place_path(current_place) %>

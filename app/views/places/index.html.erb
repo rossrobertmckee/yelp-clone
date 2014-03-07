@@ -5,6 +5,9 @@
   <%= place.description %><br />
   <%= place.lat %> <br />
   <%= place.lng %> <br />
+  <% if place.user.present? %>
+    Added by: <%= place.user.email %><br />
+  <% end %>
 
   <hr />
 <% end %>

@@ -1,5 +1,8 @@
 class PlacesController < ApplicationController
   before_filter :require_current_place, :only => [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :create]
+
+
   def index
     @places = Place.all
   end
@@ -15,7 +18,7 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.create(place_params)
+    @place = current_user.places.create(place_params)
     if @place.valid?
       redirect_to places_path
     else

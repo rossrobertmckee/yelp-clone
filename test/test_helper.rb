@@ -6,3 +6,8 @@ class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
