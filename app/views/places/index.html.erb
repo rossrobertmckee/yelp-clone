@@ -3,8 +3,9 @@
 <% @places.each do |place| %>
   <%= link_to place.name, place_path(place) %><br />
   <%= place.description %><br />
-  <%= place.lat %> <br />
-  <%= place.lng %> <br />
+  <%= place.latitude %> <br />
+  <%= place.longitude %> <br />
+  <%= place.address %> <br />
   <% if place.user.present? %>
     Added by: <%= place.user.email %><br />
   <% end %>

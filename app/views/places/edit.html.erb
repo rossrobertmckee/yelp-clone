@@ -3,8 +3,9 @@
 <%= simple_form_for current_place do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :lat %>
-  <%= f.input :lng %>
+  <%= f.input :latitude %>
+  <%= f.input :longitude %>
+  <%= f.input :address %>
   <%= f.submit 'Update!' %>
 <% end %>
 

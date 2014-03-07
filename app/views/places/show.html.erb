@@ -1,8 +1,9 @@
 <h1><%= current_place.name %></h1>
 
 <%= current_place.description %><br />
-<%= current_place.lat %> <br />
-<%= current_place.lng %> <br />
+<%= current_place.address %> <br />
+<%= current_place.latitude %> <br />
+<%= current_place.longitude %> <br />
   <% if current_place.user.present? %>
     Added by: <%= current_place.user.email %><br />
   <% end %>

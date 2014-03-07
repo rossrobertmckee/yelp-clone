@@ -35,7 +35,7 @@ class PlacesControllerTest < ActionController::TestCase
       post :create, {:place => {
           :name => 'yolo',
           :description => 'omg',
-          :lat => 42.3631519,
+          :latitude => 42.3631519,
           :lng => -71.056098,
         }
       }
@@ -52,8 +52,8 @@ class PlacesControllerTest < ActionController::TestCase
       post :create, {:place => {
           :name => 'yolo',
           :description => 'omg',
-          :lat => 42.3631519,
-          :lng => -71.056098,
+          :latitude => 42.3631519,
+          :longitude => -71.056098,
         }
       }
     end
@@ -72,7 +72,7 @@ class PlacesControllerTest < ActionController::TestCase
           :name => '',
           :description => '',
           :lat => nil,
-          :lng => nil
+          :longitude => nil
         }
       }
     end

@@ -36,6 +36,10 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+group :development, :test do
+  gem "figaro"
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -51,3 +55,4 @@ end
 gem 'simple_form'
 gem 'devise'
 
+gem 'geocoder'
