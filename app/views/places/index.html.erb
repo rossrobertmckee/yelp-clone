@@ -14,3 +14,58 @@
 <% end %>
 
 <%= link_to 'New Place', new_place_path %>
+
+
+    <style>
+      html, body, #map-canvas {
+        height: 90%;
+        width: 90%;
+        margin: 20px auto;
+        padding: 0px;
+
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+<% center = [@places.last.latitude, @places.last.longitude]
+# note this is a total shit way to do this
+%>
+function initialize() {
+/* largely copied from: https://developers.google.com/maps/documentation/javascript/examples/marker-simple */
+
+
+
+  var myLatlng = new google.maps.LatLng(<%= center.first %>,<%= center.last %>);
+  var mapOptions = {
+    zoom: 2,
+    center: myLatlng
+  }
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  <% @places.each do |p| %>
+      <% if p.latitude.present? && p.longitude.present? %>
+        var ll = new google.maps.LatLng(<%= p.latitude %>,<%= p.longitude %>);
+
+        var marker = new google.maps.Marker({
+          position: ll,
+          map: map,
+          title: 'Hello World!'
+        });
+    <% end %>
+  <% end %>
+
+
+setAllMap(markers);
+
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+
+
+    <div id="map-canvas"></div>
+    
