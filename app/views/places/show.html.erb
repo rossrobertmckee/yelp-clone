@@ -10,4 +10,7 @@
 
 
 <%= link_to '<< Back', places_path %>
+<% if current_user && current_user.id == current_place.try(:user_id) %>
 <%= link_to 'edit', edit_place_path(current_place) %>
+<%= link_to 'destroy', place_path(current_place), :method => :delete %>
+<% end %>

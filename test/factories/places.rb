@@ -4,5 +4,6 @@ FactoryGirl.define do
     description "Try the cupcakes"
     lat(42.3631519)
     lng(-71.056098)
+    association :user
   end
 end
