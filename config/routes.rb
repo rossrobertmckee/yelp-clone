@@ -3,6 +3,9 @@ YelpClone::Application.routes.draw do
   root 'places#index'
   resources :places
   resources :users, :only => :show
+  namespace :admin do
+    resource :dashboard, :only => :show
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

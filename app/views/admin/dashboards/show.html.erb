@@ -1,0 +1,10 @@
+<h1>Admin Dashboard</h1>
+
+<table class="stiped table">
+<% User.all.each do |user| %>
+  <tr>
+      <td><%= user.id %></td>
+      <td><%= link_to user.email, user_path(user) %></td>
+  </tr>
+<% end %>
+</table>
