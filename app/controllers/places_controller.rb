@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :require_current_place_is_editable, :only => [:edit, :update, :destroy]
 
-
+  # http://omg.com
   def index
     @places = Place.all
   end
@@ -55,7 +55,6 @@ class PlacesController < ApplicationController
   def require_current_place
     render_not_found unless current_place.present?
   end
-
   def require_current_place_is_editable
     render_not_found(:unauthorized) unless current_user && current_user.id == current_place.user_id
   end
