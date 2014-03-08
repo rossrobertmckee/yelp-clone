@@ -56,3 +56,5 @@ gem 'simple_form'
 gem 'devise'
 
 gem 'geocoder'
+
+gem 'bootstrap-sass', '~> 3.1.1'
