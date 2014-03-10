@@ -1,3 +1,17 @@
 <h1>User: <%= selected_user.email %></h1>
 
-Omg lol
+<h2>Comments</h2>
+
+<% selected_user.comments.each do |comment| %>
+  About <%= link_to comment.place.name, place_path(comment.place) %>
+  <blockquote><%= comment.message %></blockquote>
+  <small><%= Comment::RATINGS.invert[comment.rating] %></small>
+  <em><%= comment.user.try(:email) %></em>
+<% end %>
+
+
+<h2> Places</h2>
+
+<% selected_user.places.each do |place| %>
+  <h5><%= link_to place.name, place_path(place) %></h5>
+<% end %>

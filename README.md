@@ -3,9 +3,6 @@
 * admin dashboards
   * last comments made on the platform
   * admins should be able to edit / destroy anything
-* comments
-  * text or rating or both
-  * any users can comment on any place
 
 * look better
 
