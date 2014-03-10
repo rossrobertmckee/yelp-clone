@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
   has_many :comments
 
   scope :admin, -> { where(:admin => true) }
+
+  def can_edit?(p)
+    return false if p.blank?
+
+    p.user_id == self.id || self.admin
+  end
+
+  
 end

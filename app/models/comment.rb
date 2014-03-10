@@ -12,4 +12,7 @@ class Comment < ActiveRecord::Base
 
   validates :rating, :inclusion => {:in => (RATINGS.values + [nil, ''])}
 
+  def controlled_by?(user)
+    user.admin || (user == self.user && user.present?)
+  end
 end

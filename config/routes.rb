@@ -4,6 +4,7 @@ YelpClone::Application.routes.draw do
   resources :places do
     resources :comments, :only => :create
   end
+  resources :comments, :only => :destroy
 
   resources :users, :only => :show
   namespace :admin do

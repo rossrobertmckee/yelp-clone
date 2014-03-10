@@ -24,3 +24,33 @@
   </tr>
 <% end %>
 </table>
+
+
+<h2>Places Overview</h2>
+
+<table>
+  <% Place.all.each do |place| %>
+    <tr>
+      <td>
+        <%= link_to place.name, place_path(place) %>
+      </td>
+
+      <td>
+        <%= link_to 'Edit', edit_place_path(place) %>
+        <%= link_to 'Destroy', place_path(place), :method => 'delete' %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<h2> Comments</h2>
+
+<% Comment.all.each do |comment| %>
+  About <%= link_to comment.place.name, place_path(comment.place) %>
+  <blockquote><%= comment.message %></blockquote>
+  <small><%= Comment::RATINGS.invert[comment.rating] %></small>
+  <em><%= comment.user.try(:email) %></em>
+  <%= link_to 'Destroy', comment_path(comment), :method => :delete, :class => 'btn btn-large btn-primary' %>
+  <br />
+  <hr />
+<% end %>

@@ -1,9 +1,7 @@
 require 'test_helper'
 
 class PlacesControllerTest < ActionController::TestCase
-  test "flunk" do
-    assert true
-  end
+
   test "index" do
     FactoryGirl.create(:place)
     get :index

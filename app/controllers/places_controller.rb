@@ -57,6 +57,8 @@ class PlacesController < ApplicationController
     render_not_found unless current_place.present?
   end
   def require_current_place_is_editable
-    render_not_found(:unauthorized) unless current_user && current_user.id == current_place.user_id
+    unless current_user.can_edit?(current_place)
+      render_not_found(:unauthorized) 
+    end
   end
 end

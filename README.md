@@ -1,9 +1,6 @@
 **Here's what you'll learn building a Yelp clone:**
-
-* admin dashboards
-  * last comments made on the platform
-  * admins should be able to edit / destroy anything
-
+* map on show page
+* maybe get an picture uploaded
 * look better
 
 TODO: when pushing deal with geocoder
