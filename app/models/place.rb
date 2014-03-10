@@ -11,6 +11,7 @@ class Place < ActiveRecord::Base
   private
 
   def deliver_admin_email
+    return if User.admin.blank?
     NotificationMailer.place_added(self).deliver
   end
 end

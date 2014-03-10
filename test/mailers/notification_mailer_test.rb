@@ -17,4 +17,5 @@ class NotificationMailerTest < ActionMailer::TestCase
     assert_equal [admin1.email, admin2.email].sort, email.to.sort
     assert_equal ['ken@my-awesome-app.com'], email.from
   end
+
 end

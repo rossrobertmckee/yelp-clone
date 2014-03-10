@@ -14,4 +14,16 @@ class PlaceTest < ActiveSupport::TestCase
     email = ActionMailer::Base.deliveries.last
     assert_equal 'A new place has been added to the application', email.subject
   end
+
+  test "no admins no mail sent" do
+    User.destroy_all
+    place = FactoryGirl.build(:place)
+    ActionMailer::Base.deliveries.clear
+    assert ActionMailer::Base.deliveries.empty?
+
+    assert_no_difference 'ActionMailer::Base.deliveries.count' do
+      place.save
+    end
+
+  end
 end

@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :places
 
-  scope :admin, where(:admin => true)
+  scope :admin, -> { where(:admin => true) }
 end
