@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :places
+  has_many :comments
 
   scope :admin, -> { where(:admin => true) }
 end
