@@ -32,7 +32,7 @@
       <% center = [@places.last.latitude, @places.last.longitude]
       # note this is a total shit way to do this
       %>
-      function initialize() {
+      $(function() {
       /* largely copied from: https://developers.google.com/maps/documentation/javascript/examples/marker-simple */
 
 
@@ -58,12 +58,11 @@
         <% end %>
 
 
-      setAllMap(markers);
 
 
-      }
+    });
 
-      google.maps.event.addDomListener(window, 'load', initialize);
+
 
     </script>
 

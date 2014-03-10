@@ -1,10 +1,26 @@
 <h1>Admin Dashboard</h1>
 
-<table class="stiped table">
+<h2> Overview</h2>
+<table class="striped table">
+  <tr>
+    <td>Places</td>
+    <td><%= Place.count %>
+  </tr>
+
+  <tr>
+    <td>Users</td>
+    <td><%= User.count %></td>
+  </tr>
+
+</table>
+
+<h2>User Overview</h2>
+<table class="striped table">
 <% User.all.each do |user| %>
   <tr>
       <td><%= user.id %></td>
       <td><%= link_to user.email, user_path(user) %></td>
+      <td><%= user.places.count %></td>
   </tr>
 <% end %>
 </table>
