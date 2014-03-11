@@ -1,17 +1,48 @@
 <h1>User: <%= selected_user.email %></h1>
 
-<h2>Comments</h2>
+<br /><br /><br /><br />
 
 <% selected_user.comments.each do |comment| %>
-  About <%= link_to comment.place.name, place_path(comment.place) %>
-  <blockquote><%= comment.message %></blockquote>
-  <small><%= Comment::RATINGS.invert[comment.rating] %></small>
-  <em><%= comment.user.try(:email) %></em>
+<div class="col-sm-6 col-xs-12">
+  <h2 class="text-center"><%= comment.place.name %></h2>
+  <blockquote>
+  <b><%= Comment::RATINGS.invert[comment.rating] %></b> -
+    <%= comment.message %>
+  <small><%= comment.user.try(:email) %></small>
+    <%= link_to 'Destroy', comment_path(comment), :method => :delete, :class => 'btn btn-xs btn-primary pull-right' %>
+    <div class="clr"></div>
+
+</blockquote>
+</div>
 <% end %>
 
 
-<h2> Places</h2>
 
-<% selected_user.places.each do |place| %>
-  <h5><%= link_to place.name, place_path(place) %></h5>
+
+<% if selected_user.places.present? %>
+  <h2 class="col-xs-10 col-xs-offset-1">My Places</h2>
+<br /><br />
+<br /><br />
+
+
+  <% selected_user.places.each do |place| %>
+    <div class="booyah-box col-xs-10 col-xs-offset-1">
+      <h2><%= link_to place.name, place_path(place) %></h2>
+      <i><%= place.address %></i><br /><br />
+
+      <p><%= place.description %></p>
+
+
+      <% if place.comments.present? %>
+        <br />
+        <blockquote>
+          <%= place.comments.last.message %>
+          <br />
+          <small><%= place.comments.last.user.email %></small>
+        </blockquote>
+      <% end %>
+
+    </div>
+
+  <% end %>
 <% end %>
