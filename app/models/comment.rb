@@ -12,6 +12,7 @@ class Comment < ActiveRecord::Base
   }
 
   validates :rating, :inclusion => {:in => (RATINGS.values + [nil, ''])}
+  scope :five_star, -> { where(:rating => '5_stars') }
 
   def controlled_by?(user)
     user == self.user && user.present?
