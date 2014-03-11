@@ -1,22 +1,22 @@
-<div class="col-xs-offset-1 xs-col-10">
+<% @places.each do |place| %>
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
+    <h2><%= link_to place.name, place_path(place) %></h2>
+    <i><%= place.address %></i><br /><br />
 
-      <h1>All the Places</h1>
+    <p><%= place.description %></p>
+    
 
-      <% @places.each do |place| %>
-        <%= link_to place.name, place_path(place) %><br />
-        <%= place.description %><br />
-        <%= place.latitude %> <br />
-        <%= place.longitude %> <br />
-        <%= place.address %> <br />
-        <% if place.user.present? %>
-          Added by: <%= place.user.email %><br />
-        <% end %>
+    <% if place.comments.present? %>
+      <br />
+      <blockquote>
+        <%= place.comments.last.message %>
+        <br />
+        <small><%= place.comments.last.user.email %></small>
+      </blockquote>
+    <% end %>
 
-        <hr />
-      <% end %>
+  </div>
 
-      <%= link_to 'New Place', new_place_path %>
-
-
-
-</div>
+<% end %>
+<br />
+<br />
