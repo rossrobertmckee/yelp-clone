@@ -5,6 +5,5 @@ FactoryGirl.define do
     end
     password "omglolhahaha"
     password_confirmation "omglolhahaha"
-    admin false
   end
 end

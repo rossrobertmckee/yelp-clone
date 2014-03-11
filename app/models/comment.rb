@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :place
+  after_create :deliver_admin_email
 
   RATINGS = {
     'One Star'    => '1_star',
@@ -13,6 +14,15 @@ class Comment < ActiveRecord::Base
   validates :rating, :inclusion => {:in => (RATINGS.values + [nil, ''])}
 
   def controlled_by?(user)
-    user.admin || (user == self.user && user.present?)
+    user == self.user && user.present?
+  end
+
+
+
+  private
+
+  def deliver_admin_email
+    return if self.place.user.blank?
+    NotificationMailer.comment_added(self).deliver
   end
 end

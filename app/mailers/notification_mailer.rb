@@ -1,10 +1,11 @@
 class NotificationMailer < ActionMailer::Base
   default from: "no-reply@my-awesome-app.com"
 
-  def place_added(place)
-    @place = place
-    addresses = User.admin.collect {|a| a.email }
+  def comment_added(comment)
+    @place = comment.place
+    @comment = comment
+    addresses = [comment.place.user.email]
     mail(:to => addresses, :from => 'ken@my-awesome-app.com',
-      :subject => 'A new place has been added to the application')
+      :subject => 'A new comment has been added to the application')
   end
 end

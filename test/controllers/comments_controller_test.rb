@@ -54,17 +54,9 @@ class CommentsControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
-  test "admin can destroy comment" do
-    u = FactoryGirl.create(:user, :admin => true)
-    sign_in u
-    comment = FactoryGirl.create(:comment)
-    delete :destroy, :id => comment.id
-    assert_redirected_to place_path(comment.place)
-    assert_nil Comment.find_by_id(comment.id)
-  end
 
   test "author can destroy comment" do
-    u = FactoryGirl.create(:user, :admin => false)
+    u = FactoryGirl.create(:user)
     sign_in u
     comment = FactoryGirl.create(:comment, :user => u)
     delete :destroy, :id => comment.id
@@ -73,7 +65,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "random person cannot destroy a comment" do
-    u = FactoryGirl.create(:user, :admin => false)
+    u = FactoryGirl.create(:user)
     sign_in u
 
     comment = FactoryGirl.create(:comment)

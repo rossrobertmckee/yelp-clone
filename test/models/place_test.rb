@@ -1,23 +1,23 @@
 require 'test_helper'
 
 class PlaceTest < ActiveSupport::TestCase
-  test "email is sent when a place is save" do
-    admin = FactoryGirl.create(:user, :admin => true)
-    place = FactoryGirl.build(:place)
+  test "email is sent when a comment is saved" do
+    comment = FactoryGirl.build(:comment)
     ActionMailer::Base.deliveries.clear
     assert ActionMailer::Base.deliveries.empty?
 
     assert_difference 'ActionMailer::Base.deliveries.count' do
-      place.save
+      comment.save
     end
 
     email = ActionMailer::Base.deliveries.last
-    assert_equal 'A new place has been added to the application', email.subject
+    assert_equal 'A new comment has been added to the application', email.subject
   end
 
-  test "no admins no mail sent" do
+  test "no one can get the message, it wont be sent" do
     User.destroy_all
-    place = FactoryGirl.build(:place)
+    place = FactoryGirl.build(:place, :user => nil)
+    comment = FactoryGirl.create(:comment, :place => place)
     ActionMailer::Base.deliveries.clear
     assert ActionMailer::Base.deliveries.empty?
 
