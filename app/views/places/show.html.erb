@@ -3,8 +3,56 @@
 
   <%= current_place.description %><br />
   <%= current_place.address %> <br />
-  <%= current_place.latitude %> <br />
-  <%= current_place.longitude %> <br />
+
+
+  <style>
+    #map-canvas {
+      height: 200px;
+      width: 900px;
+      margin: 20px auto;
+      padding: 0px;
+
+    }
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+  <script>
+$(function() {
+/* largely copied from: https://developers.google.com/maps/documentation/javascript/examples/marker-simple */
+
+
+
+var myLatlng = new google.maps.LatLng(<%= current_place.latitude%>,<%= current_place.longitude %>);
+var mapOptions = {
+  zoom: 13,
+  center: myLatlng
+}
+
+var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+    <% if current_place.latitude.present? && current_place.longitude.present? %>
+      var ll = new google.maps.LatLng(<%= current_place.latitude %>,<%= current_place.longitude %>);
+
+      var marker = new google.maps.Marker({
+        position: ll,
+        map: map,
+        title: 'Place'
+      });
+  <% end %>
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+<div id="map-canvas"></div>
+
+
 
   <% if current_place.user.present? %>
     Added by: <%= current_place.user.email %><br />
