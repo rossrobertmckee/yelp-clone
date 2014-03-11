@@ -142,4 +142,8 @@ SimpleForm.setup do |config|
 
   # Default class for inputs
   # config.input_class = nil
+
+  # makes simple_form => tbs3 work good together
+  config.input_class = "form-control"
+
 end
