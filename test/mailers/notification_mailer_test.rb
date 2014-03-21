@@ -11,7 +11,7 @@ class NotificationMailerTest < ActionMailer::TestCase
 
     assert_equal 'A new comment has been added to the application', email.subject
     assert_equal [comment.place.user.email].sort, email.to.sort
-    assert_equal ['ken@my-awesome-app.com'], email.from
+    assert_equal ['ken@theFirehoseProject.com'], email.from
   end
 
 end
