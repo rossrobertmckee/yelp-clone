@@ -4,10 +4,8 @@
 
 <%= simple_form_for current_place do |f| %>
   <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :latitude %>
-  <%= f.input :longitude %>
   <%= f.input :address %>
+  <%= f.input :description %>
   <%= f.submit 'Update!', :class => 'btn btn-primary btn-lg pull-right' %>
 <% end %>
 
