@@ -1,4 +1,6 @@
-<h1> Update Your Place</h1>
+<div class="col-xs-offset-1 col-xs-10 booyah-box">
+  <h1> Update Your Place</h1>
+  <br />
 
 <%= simple_form_for current_place do |f| %>
   <%= f.input :name %>
@@ -6,6 +8,6 @@
   <%= f.input :latitude %>
   <%= f.input :longitude %>
   <%= f.input :address %>
-  <%= f.submit 'Update!' %>
+  <%= f.submit 'Update!', :class => 'btn btn-primary btn-lg pull-right' %>
 <% end %>
 
